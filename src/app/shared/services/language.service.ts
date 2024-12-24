@@ -1,4 +1,4 @@
-import { SessionStorageService } from './session-storage.service';
+import { SessionStorageService } from '../../core/services/session-storage.service';
 import { inject, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, Subject } from 'rxjs';
