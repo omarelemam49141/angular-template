@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { LanguageService } from './core/services/language.service';
-import  { sharedImports } from './shared/sharedImports';
+import { LanguageService } from './shared/services/language.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { sharedImports } from './shared/imports/sharedImports copy';
 
 @Component({
   selector: 'app-root',
