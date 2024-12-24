@@ -9,18 +9,25 @@ import { Observable, Subject } from 'rxjs';
 export class LanguageService {
   //observables
   private isLangArabic = new Subject<boolean>;
+  htmlTag: HTMLHtmlElement;
 
   //injection
   private translateService = inject(TranslateService);
 
   //life cycle
   constructor() {
+    this.htmlTag = document.getElementsByTagName(
+      'html'
+    )[0] as HTMLHtmlElement;
+    console.log(this.htmlTag)
     this.setLanguageInLocalStorage();
   }
 
   //methods
   setBodyDirection(lang: string) {
     document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    this.htmlTag.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    this.htmlTag.lang = lang;
   }
   setCurrentLanguageSubject(lang: string) {
     this.isLangArabic.next(lang === 'ar');
