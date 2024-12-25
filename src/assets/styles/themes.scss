@@ -1,0 +1,30 @@
+// Default Theme
+$primary-color: #007bff;
+$background-color: #ffffff;
+$text-color: #212529;
+
+.theme-default {
+  --primary-color: #{$primary-color};
+  --background-color: #{$background-color};
+  --text-color: #{$text-color};
+  --font-family: 'Times New Roman', Times, serif;
+}
+
+// Dark Theme
+$dark-background: #121212;
+$dark-text: #e0e0e0;
+
+.theme-dark {
+  --primary-color: #{$primary-color};
+  --background-color: #{$dark-background};
+  --text-color: #{$dark-text};
+  --font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+// Additional Themes (add as needed)
+.theme-blue {
+  --primary-color: #17a2b8;
+  --background-color: #f8f9fa;
+  --text-color: #343a40;
+  --font-family: cursive, Times, serif;
+}
