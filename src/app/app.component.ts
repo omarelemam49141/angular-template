@@ -1,13 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { LanguageService } from './core/services/language.service';
-import  { sharedImports } from './shared/sharedImports';
+import { sharedImports } from './shared/imports/sharedImports';
+import { LanguageService } from './shared/services/language.service';
+import { ThemeGearboxComponent } from './shared/components/theme-gearbox/theme-gearbox.component';
+import { ThemeService } from './shared/services/themes.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, sharedImports],
+  imports: [sharedImports, ThemeGearboxComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -18,9 +19,11 @@ export class AppComponent {
   //injection
   private translateService = inject(TranslateService);
   private languageService = inject(LanguageService);
+  private themeService = inject(ThemeService);
 
   //life cycle
   constructor() {
+    this.themeService.loadTheme();
     this.addSupportedLanguages();
     this.setDefaultLanguage('en');
     let currLang = this.languageService.getCurrentLanguage()
