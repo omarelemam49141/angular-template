@@ -34,9 +34,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/**========================================================================
-   *?                           fonts-class
-   *========================================================================**/
 /*enhanced font size*/
 @media (min-width: 1400px) {
   @each $sizeName, $size, $vName in $xlarge-screen-fontsizes {
@@ -79,6 +76,16 @@ html {
 }
 /*enhanced font size*/
 // ================end of font-size=======================================================
+
+/*enhanced colors*/
+@each $color in $bg-colors {
+  @include setColors("bg", "background-color", $color);
+}
+
+@each $color in $text-colors {
+  @include setColors("text", "color", $color);
+}
+/*enhanced colors*/
 
 /**========================================================================
    *?                           fonts-class
@@ -144,55 +151,22 @@ html {
 }
 /*enhanced colors*/
 
-/**========================================================================
-   *?                           form control inputs
-   *========================================================================**/
-.form-control::placeholder {
-  color: #b7b7b7 !important;
+/* --------------------------------- contract status  ---------------------------------------- */
+@each $bg-color, $f-color, $vName in $status-color {
+  @include status-setting($bg-color, $f-color, $vName);
 }
 
-.form-control {
-  border-radius: var(--general-field-border-radius);
-  color: var(--color-primary);
-  background-color: var(--general-field-bg-color);
-  border: var(--general-field-border);
-  padding: var(--general-field-padding);
-  height: var(--general-field-height);
+/* start padding */
+@each $padding in $padding-style {
+  @include padding-setting($padding);
 }
+/* end padding */
 
-.form-control:focus {
-  color: var(--color-primary);
-  outline: 0;
+/* start margin */
+@each $margin in $margin-style {
+  @include margin-setting($margin);
 }
-
-.form-control::placeholder {
-  color: var(--general-field-placeholder-color);
-}
-
-.form-control.error {
-  border-color: var(--general-field-border-error-color);
-}
-
-.form-control.error::placeholder {
-  border-color: var(--general-field-placeholder-error-color);
-}
-
-.signin-control {
-  height: var(--sign-in-field-height);
-}
-
-@media (min-width: 700px) {
-  .signup-control,
-  .signup-control-middle {
-    padding: 16px 24px;
-  }
-}
-@media (max-width: 699px) {
-  .signup-control,
-  .signup-control-middle {
-    padding: 0;
-  }
-}
+/* end margin */
 
 /**========================================================================
    *                           tooltip                                    *
@@ -312,11 +286,56 @@ button:disabled {
    *                           Scroll bar
    *========================================================================**/
 
-@media (min-width: 768px) {
-  @include scroll-bar-maker($scroll-bar);
+   @media (min-width: 768px) {
+    @include scroll-bar-maker($scroll-bar);
+  }
+
+/**========================================================================
+   *?                           form control inputs
+   *========================================================================**/
+.form-control::placeholder {
+  color: #b7b7b7 !important;
 }
 
-/* --------------------------------- contract status  ---------------------------------------- */
-@each $bg-color, $f-color, $vName in $status-color {
-  @include status-setting($bg-color, $f-color, $vName);
+.form-control {
+  border-radius: var(--general-field-border-radius);
+  color: var(--color-primary);
+  background-color: var(--general-field-bg-color);
+  border: var(--general-field-border);
+  padding: var(--general-field-padding);
+  height: var(--general-field-height);
+}
+
+.form-control:focus {
+  color: var(--color-primary);
+  outline: 0;
+}
+
+.form-control::placeholder {
+  color: var(--general-field-placeholder-color);
+}
+
+.form-control.error {
+  border-color: var(--general-field-border-error-color);
+}
+
+.form-control.error::placeholder {
+  border-color: var(--general-field-placeholder-error-color);
+}
+
+.signin-control {
+  height: var(--sign-in-field-height);
+}
+
+@media (min-width: 700px) {
+  .signup-control,
+  .signup-control-middle {
+    padding: 16px 24px;
+  }
+}
+@media (max-width: 699px) {
+  .signup-control,
+  .signup-control-middle {
+    padding: 0;
+  }
 }
